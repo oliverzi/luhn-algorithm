@@ -7,7 +7,7 @@ int main()
     int i, n=0, e=0;
     long long x;
     long long a[16], d[16];
-    long long b[8], c[8];
+    long long b[16], c[16];
 
     while ((n < 16) || (n > 16)) {
         printf_s("Enter a credit card number: ");
@@ -46,7 +46,7 @@ int main()
     // Seperating 2 sets
     int g = 0, h = 0;
     for (i = 0; i < 16; i++) {
-        if (a[i] % 2) {
+        if (i % 2) {
             b[g] = a[i];
             g++;
         }
@@ -58,7 +58,17 @@ int main()
 
     // Doubling first set
     for (i = 0; i < 16; i++) {
-        d[i] = a[i] * 2;
+        d[i] = c[i] * 2;
+    }
+
+    // Adding all the double digit numbers.
+    for (i = 0; i < 16; i++) {
+        int n = 0, m = 0;
+        if ((d[i] / 10) >= 1) {
+            n = d[i] / 10;
+            m = d[i] % 10;
+            d[i] = n + m;
+        }
     }
 
     return 0;
