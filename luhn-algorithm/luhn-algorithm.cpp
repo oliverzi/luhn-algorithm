@@ -23,26 +23,6 @@ int main()
         x = x / 10;
     }
 
-    if (a[0] == 4) {
-        printf_s("The credit card is valid. It is issued by Visa.");
-        e++;
-    }
-    if (a[0] == 5 && (a[1] >= 1 && a[1] <= 5)) {
-        printf_s("The credit card is valid. It is issued by Mastercard.");
-        e++;
-    }
-    if (a[0] == 6 && ((a[1] == 5) || (a[1] == 0 && a[2] == 1 && a[3] == 1) || (a[1] == 4 && a[2] == 4))) {
-        printf_s("The credit card is valid. It is issued by Discover.");
-        e++;
-    }
-    if (a[0] == 3 && (a[1] == 4 || a[1] == 7)) {
-        printf_s("The credit card is valid. It is issued by American Express (Amex).");
-        e++;
-    }
-    if (e == 0) {
-        printf_s("The credit card has not been recognized.");
-    }
-
     // Seperating 2 sets
     int g = 0, h = 0;
     for (i = 0; i < 16; i++) {
@@ -61,7 +41,7 @@ int main()
         d[i] = c[i] * 2;
     }
 
-    // Adding all the double digit numbers.
+    // Adding all the double digit numbers
     for (i = 0; i < 16; i++) {
         int n = 0, m = 0;
         if ((d[i] / 10) >= 1) {
@@ -69,6 +49,34 @@ int main()
             m = d[i] % 10;
             d[i] = n + m;
         }
+    }
+
+    // Adding all the double digit numbers
+    int rez = 0;
+    for (i = 0; i < 8; i++) {
+        rez = rez + d[i] + b[i];
+    }
+
+    if ((rez / 10 != 0) && (rez % 10 == 0)) {
+        e++;
+    }
+
+    if(e==1){
+        if (a[0] == 4) {
+            printf_s("The credit card is valid. It is issued by Visa.");
+        }
+        if (a[0] == 5 && (a[1] >= 1 && a[1] <= 5)) {
+            printf_s("The credit card is valid. It is issued by Mastercard.");
+        }
+        if (a[0] == 6 && ((a[1] == 5) || (a[1] == 0 && a[2] == 1 && a[3] == 1) || (a[1] == 4 && a[2] == 4))) {
+            printf_s("The credit card is valid. It is issued by Discover.");
+        }
+        if (a[0] == 3 && (a[1] == 4 || a[1] == 7)) {
+            printf_s("The credit card is valid. It is issued by American Express (Amex).");
+        }
+    }
+    else {
+        printf_s("The credit card has not been recognized.");
     }
 
     return 0;
