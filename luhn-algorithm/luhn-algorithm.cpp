@@ -6,8 +6,9 @@ int length(int);
 
 int main()
 {
-    int n=0;
+    int i, p, n = 0;
     float x;
+    char a[50];
 
     while ((n < 16) || (n > 16)) {
         printf_s("Enter a credit card number: ");
@@ -18,8 +19,10 @@ int main()
         }
     }
 
-    printf_s("%d", n);
+    sprintf_s(a, "%f", x);
+
+    if(a[0]==52)
+        printf_s("The credit card is valid. It is issued by Visa.");
 
     return 0;
-
 }
