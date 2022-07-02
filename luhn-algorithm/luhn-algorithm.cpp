@@ -9,21 +9,24 @@ int main()
     long long a[16], d[16];
     long long b[16], c[16];
 
+    // Entering the credit card number
     while ((n < 16) || (n > 16)) {
         printf_s("Enter a credit card number: ");
         scanf_s("%lld", &x);
+        // Checking the length of the number
         n = floor(log10(abs(x))) + 1;
         if ((n < 16) || (n > 16)) {
             printf_s("The entered credit card number doesn't have 16 digits!\n");
         }
     }
 
+    // Creating an integer array from the original number
     for (i = 15; i >= 0; i--) {
         a[i] = x % 10;
         x = x / 10;
     }
 
-    // Seperating 2 sets
+    // Dividing the original set into 2 sets
     int g = 0, h = 0;
     for (i = 0; i < 16; i++) {
         if (i % 2) {
@@ -36,12 +39,12 @@ int main()
         }
     }
 
-    // Doubling first set
+    // Doubling the first set
     for (i = 0; i < 16; i++) {
         d[i] = c[i] * 2;
     }
 
-    // Adding all the double digit numbers
+    // Adding the digits of double digit numbers
     for (i = 0; i < 16; i++) {
         int n = 0, m = 0;
         if ((d[i] / 10) >= 1) {
@@ -57,6 +60,7 @@ int main()
         rez = rez + d[i] + b[i];
     }
 
+    // Checking if the credit card is recognized by any major U.S. credit card issuer
     if ((rez / 10 != 0) && (rez % 10 == 0)) {
         e++;
     }
