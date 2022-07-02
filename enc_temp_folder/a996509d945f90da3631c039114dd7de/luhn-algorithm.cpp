@@ -43,7 +43,6 @@ int main()
         printf_s("The credit card has not been recognized.");
     }
 
-    // Seperating 2 sets
     int g = 0, h = 0;
     for (i = 0; i < 16; i++) {
         if (a[i] % 2) {
@@ -54,6 +53,10 @@ int main()
             c[h] = a[i];
             h++;
         }
+    }
+
+    for (i = 0; i < 16; i++) {
+        d[i] = a[i] * 2;
     }
 
     return 0;
