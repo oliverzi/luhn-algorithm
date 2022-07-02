@@ -56,5 +56,10 @@ int main()
         }
     }
 
+    // Doubling first set
+    for (i = 0; i < 16; i++) {
+        d[i] = a[i] * 2;
+    }
+
     return 0;
 }
