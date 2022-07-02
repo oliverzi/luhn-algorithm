@@ -2,12 +2,11 @@
 #include <math.h>
 #include <cmath>
 
-int length(int);
-
 int main()
 {
-    int n=0;
+    int i, e = 0, n = 0;
     float x;
+    char a[50];
 
     while ((n < 16) || (n > 16)) {
         printf_s("Enter a credit card number: ");
@@ -18,8 +17,31 @@ int main()
         }
     }
 
-    printf_s("%d", n);
+    sprintf_s(a, "%f", x);
+
+    // 0 = 48, 1 = 49, 2 = 50, 3 = 51, 4 = 52, 5 = 53, 6 = 54, 7 = 55, 8 = 56, 9 = 57
+
+    if(a[0]==52){
+        printf_s("The credit card is valid. It is issued by Visa.");
+        e++;
+    }
+    if (a[0] == 53 && (a[1] >= 49 && a[1] <= 53)) {
+        printf_s("The credit card is valid. It is issued by Mastercard.");
+        e++;
+    }
+    if (a[0] == 54 && ((a[1] == 53) || (a[1] == 48 && a[2] == 49 && a[3] == 49) || (a[1] == 52 && a[2] == 52))) {
+        printf_s("The credit card is valid. It is issued by Discover.");
+        e++;
+    }
+    if (a[0] == 51 && (a[1] == 52 || a[1] == 55)) {
+        printf_s("The credit card is valid. It is issued by American Express (Amex).");
+        e++;
+    }
+    if (e == 0) {
+        printf_s("The credit card has not been recognized.");
+    }
+
+
 
     return 0;
-
 }
