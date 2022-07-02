@@ -54,7 +54,7 @@ int main()
         }
     }
 
-    // Adding all the double digit numbers
+    // Adding all numbers from both sets
     int rez = 0;
     for (i = 0; i < 8; i++) {
         rez = rez + d[i] + b[i];
