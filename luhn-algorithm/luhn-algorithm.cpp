@@ -2,6 +2,9 @@
 #include <math.h>
 #include <cmath>
 
+int length(long long);
+void validator(int, long long a[16]);
+
 int main()
 {
     int i, n=0, e=0;
@@ -14,10 +17,7 @@ int main()
         printf_s("Enter a credit card number: ");
         scanf_s("%lld", &x);
         // Checking the length of the number
-        n = floor(log10(abs(x))) + 1;
-        if ((n < 16) || (n > 16)) {
-            printf_s("The entered credit card number doesn't have 16 digits!\n");
-        }
+        n = length(x);
     }
 
     // Creating an integer array from the original number
@@ -61,11 +61,29 @@ int main()
     }
 
     // Checking if the credit card is recognized by any major U.S. credit card issuer
+    validator(rez, a);
+
+    return 0;
+}
+
+int length(long long x){
+    int n;
+    n = floor(log10(abs(x))) + 1;
+    if ((n < 16) || (n > 16)) {
+        printf_s("The entered credit card number doesn't have 16 digits!\n");
+    }
+    else {
+        return n;
+    }
+}
+
+void validator(int rez, long long a[16]) {
+    int e = 0;
     if ((rez / 10 != 0) && (rez % 10 == 0)) {
         e++;
     }
 
-    if(e==1){
+    if (e == 1) {
         if (a[0] == 4) {
             printf_s("The credit card is valid. It is issued by Visa.");
             e++;
@@ -89,6 +107,4 @@ int main()
     else {
         printf_s("The credit card has not been recognized.");
     }
-
-    return 0;
 }
